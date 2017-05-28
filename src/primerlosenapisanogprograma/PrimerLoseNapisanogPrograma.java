@@ -5,13 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PrimerLoseNapisanogPrograma {
-    public static class Kutija {
-        public String naziv;
-        public float sirina, duzina, visina;
-        public String materijal;
-        public boolean imaPoklopac;
-    }
-
     public static void main(String[] args) {
         if (args.length != 1) {
             System.out.println();
