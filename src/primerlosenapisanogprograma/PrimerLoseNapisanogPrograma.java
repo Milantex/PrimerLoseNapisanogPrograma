@@ -46,12 +46,7 @@ public class PrimerLoseNapisanogPrograma {
         }
 
         System.out.println("Najbolja kutija je: ");
-        System.out.println("Naziv: " + najbolja.getNaziv());
-        System.out.println("Širina: " + najbolja.getSirina());
-        System.out.println("Dužina: " + najbolja.getDuzina());
-        System.out.println("Visina: " + najbolja.getVisina());
-        System.out.println("Materijal: " + najbolja.getMaterijal());
-        System.out.println("Ima poklopac: " + ((najbolja.getImaPoklopac())?"Da":"Ne"));
+        System.out.println(najbolja);
     }
 
     public static void prikaziPomoc() {

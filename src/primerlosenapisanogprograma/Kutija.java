@@ -73,4 +73,15 @@ public class Kutija {
         this.setImaPoklopac(false);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return 
+            "Naziv: " + getNaziv() + "\n" +
+            "Širina: " + getSirina() + "\n" +
+            "Dužina: " + getDuzina() + "\n" +
+            "Visina: " + getVisina() + "\n" +
+            "Materijal: " + getMaterijal() + "\n" +
+            "Ima poklopac: " + ((getImaPoklopac())?"Da":"Ne") + "\n";
+    }
 }
