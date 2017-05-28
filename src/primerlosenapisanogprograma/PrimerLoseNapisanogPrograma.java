@@ -1,6 +1,7 @@
 package primerlosenapisanogprograma;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,7 +28,14 @@ public class PrimerLoseNapisanogPrograma {
             return;
         }
 
-        List<Kutija> kutije = ucitajKutijeIzDatoteke(f);
+        List<Kutija> kutije;
+        
+        try {
+            kutije = ucitajKutijeIzDatoteke(f);
+        } catch (FileNotFoundException e) {
+            System.out.println("Došlo je do greške prilikom čitanja datoteke. Greška: " + e.getMessage());
+            return;
+        }
 
         Kutija najbolja = kutije.get(0);
         for (int i=0; i<kutije.size(); i++) {
@@ -66,25 +74,23 @@ public class PrimerLoseNapisanogPrograma {
         return f.exists() && f.isFile() && f.canRead();
     }
     
-    public static List<Kutija> ucitajKutijeIzDatoteke (File f) {
+    public static List<Kutija> ucitajKutijeIzDatoteke (File f) throws FileNotFoundException {
         List<Kutija> kutije = new ArrayList<>();
 
-        try {
-            Scanner s = new Scanner(f);
+        Scanner s = new Scanner(f);
 
-            while (s.hasNext()) {
-                Kutija k = new Kutija();
+        while (s.hasNext()) {
+            Kutija k = new Kutija();
 
-                k.setNaziv(s.next());
-                k.setSirina(s.nextFloat());
-                k.setDuzina(s.nextFloat());
-                k.setVisina(s.nextFloat());
-                k.setMaterijal(s.next());
-                k.setImaPoklopac(s.nextLine().trim().equals("T"));
+            k.setNaziv(s.next());
+            k.setSirina(s.nextFloat());
+            k.setDuzina(s.nextFloat());
+            k.setVisina(s.nextFloat());
+            k.setMaterijal(s.next());
+            k.setImaPoklopac(s.nextLine().trim().equals("T"));
 
-                kutije.add(k);
-            }
-        } catch (Exception e) { }
+            kutije.add(k);
+        }
 
         return kutije;
     }
