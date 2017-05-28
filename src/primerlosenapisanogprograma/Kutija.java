@@ -10,14 +10,19 @@ public class Kutija {
     private String materijal;
     private boolean imaPoklopac;
 
+    private Float zapremina;
+
     /**
      * Vraća zapreminu kutije.
      * Zapremina se računa prilikom svakog poziva metoda.
-     * TODO: Napravi da se samo prvi put računa zapremina, a svaki sledeći vrati izračunata
      * @return Zapremina
      */
     public float getZapremina() {
-        return sirina * duzina * visina;
+        if (zapremina == null) {
+            zapremina = sirina * duzina * visina;
+        }
+
+        return zapremina;
     }
 
     /**
@@ -48,12 +53,14 @@ public class Kutija {
 
     /**
      * Pomoću ovog metoda se postavlja širina kutije.
-     * TODO: Treba proveriti da li je širina veća od 0, pa tek onda postaviti
      * @param sirina Nova širina kutije
      * @return Instanca kutije nad kojom je pozvan ovaj metod
      */
     public Kutija setSirina(float sirina) {
-        this.sirina = sirina;
+        if (sirina > 0) {
+            this.sirina = sirina;
+        }
+
         return this;
     }
 
@@ -67,12 +74,14 @@ public class Kutija {
 
     /**
      * Pomoću ovog metoda se postavlja dužina kutije.
-     * TODO: Treba proveriti da li je dužina veća od 0, pa tek onda postaviti
      * @param duzina Nova dužina kutije
      * @return Instanca kutije nad kojom je pozvan ovaj metod
      */
     public Kutija setDuzina(float duzina) {
-        this.duzina = duzina;
+        if (duzina > 0) {
+            this.duzina = duzina;
+        }
+
         return this;
     }
 
@@ -86,12 +95,14 @@ public class Kutija {
 
     /**
      * Pomoću ovog metoda se postavlja visina kutije.
-     * TODO: Treba proveriti da li je visina veća od 0, pa tek onda postaviti
      * @param visina Nova visina kutije
      * @return Instanca kutije nad kojom je pozvan ovaj metod
      */
     public Kutija setVisina(float visina) {
-        this.visina = visina;
+        if (visina > 0) {
+            this.visina = visina;
+        }
+
         return this;
     }
 
