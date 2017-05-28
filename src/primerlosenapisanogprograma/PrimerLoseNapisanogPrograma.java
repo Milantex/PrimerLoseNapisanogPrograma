@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class PrimerLoseNapisanogPrograma {
     public static void main(String[] args) {
-        if (args.length != 1) {
+        if ( ! postojiTačnoJedanArgument(args) ) {
             prikaziPomoc();
             return;
         }
@@ -86,5 +86,9 @@ public class PrimerLoseNapisanogPrograma {
         }
 
         return najbolja;
+    }
+
+    public static boolean postojiTačnoJedanArgument(String args[]) {
+        return args.length == 1;
     }
 }
