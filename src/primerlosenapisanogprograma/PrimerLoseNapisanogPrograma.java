@@ -3,7 +3,6 @@ package primerlosenapisanogprograma;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -14,13 +13,15 @@ public class PrimerLoseNapisanogPrograma {
             prikaziPomoc();
             return;
         }
+        
+        String imeDatoteke = args[0];
 
-        if (!isFilenameValid(args[0])) {
+        if (!isFilenameValid(imeDatoteke)) {
             System.err.println("Datoteka mora da ima ekstenziju .txt da bi program mogao da je koristi.");
             return;
         }
 
-        File f = new File(args[0]);
+        File f = new File(imeDatoteke);
 
         if ( ! isFileUsable(f) ) {
             System.err.println("Datoteka ne postoji ili nije moguce citanje izabrane datoteke.");
