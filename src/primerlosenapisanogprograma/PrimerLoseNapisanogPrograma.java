@@ -21,7 +21,7 @@ public class PrimerLoseNapisanogPrograma {
 
         File f = new File(args[0]);
 
-        if (! f.exists() || ! f.isFile() || ! f.canRead()) {
+        if ( ! isFileUsable(f) ) {
             System.out.println("Datoteka ne postoji ili nije moguce citanje izabrane datoteke.");
             return;
         }
@@ -76,5 +76,9 @@ public class PrimerLoseNapisanogPrograma {
 
     public static boolean isFilenameValid(String filename) {
         return Pattern.compile("^.*\\.txt$").matcher(filename).matches();
+    }
+
+    public static boolean isFileUsable(File f) {
+        return f.exists() && f.isFile() && f.canRead();
     }
 }
