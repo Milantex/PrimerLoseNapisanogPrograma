@@ -36,32 +36,32 @@ public class PrimerLoseNapisanogPrograma {
                         while (s.hasNext()) {
                             kutije.add(new Kutija());
 
-                            kutije.get(kutije.size()-1).naziv = s.next();
-                            kutije.get(kutije.size()-1).sirina = s.nextFloat();
-                            kutije.get(kutije.size()-1).duzina = s.nextFloat();
-                            kutije.get(kutije.size()-1).visina = s.nextFloat();
-                            kutije.get(kutije.size()-1).materijal = s.next();
+                            kutije.get(kutije.size()-1).setNaziv(s.next());
+                            kutije.get(kutije.size()-1).setSirina(s.nextFloat());
+                            kutije.get(kutije.size()-1).setDuzina(s.nextFloat());
+                            kutije.get(kutije.size()-1).setVisina(s.nextFloat());
+                            kutije.get(kutije.size()-1).setMaterijal(s.next());
 
                             String imaNemaPoklopac = s.nextLine().trim();
-                            kutije.get(kutije.size()-1).imaPoklopac = imaNemaPoklopac.equals("T");
+                            kutije.get(kutije.size()-1).setImaPoklopac(imaNemaPoklopac.equals("T"));
                         }
                     } catch (Exception e) { }
 
                     Kutija najbolja = kutije.get(0);
                     for (int i=0; i<kutije.size(); i++) {
-                        if (kutije.get(i).imaPoklopac &&
-                            najbolja.sirina*najbolja.visina*najbolja.duzina < kutije.get(i).sirina*kutije.get(i).visina*kutije.get(i).duzina) {
+                        if (kutije.get(i).getImaPoklopac() &&
+                            najbolja.getSirina()*najbolja.getVisina()*najbolja.getDuzina() < kutije.get(i).getSirina()*kutije.get(i).getVisina()*kutije.get(i).getDuzina()) {
                             najbolja = kutije.get(i);
                         }
                     }
 
                     System.out.println("Najbolja kutija je: ");
-                    System.out.println("Naziv: " + najbolja.naziv);
-                    System.out.println("Širina: " + najbolja.sirina);
-                    System.out.println("Dužina: " + najbolja.duzina);
-                    System.out.println("Visina: " + najbolja.visina);
-                    System.out.println("Materijal: " + najbolja.materijal);
-                    System.out.println("Ima poklopac: " + ((najbolja.imaPoklopac)?"Da":"Ne"));
+                    System.out.println("Naziv: " + najbolja.getNaziv());
+                    System.out.println("Širina: " + najbolja.getSirina());
+                    System.out.println("Dužina: " + najbolja.getDuzina());
+                    System.out.println("Visina: " + najbolja.getVisina());
+                    System.out.println("Materijal: " + najbolja.getMaterijal());
+                    System.out.println("Ima poklopac: " + ((najbolja.getImaPoklopac())?"Da":"Ne"));
                 } else {
                     System.out.println("Datoteka ne postoji ili nije moguce citanje izabrane datoteke.");
                 }
