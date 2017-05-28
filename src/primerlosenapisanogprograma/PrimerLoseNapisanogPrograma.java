@@ -13,7 +13,7 @@ public class PrimerLoseNapisanogPrograma {
             prikaziPomoc();
             return;
         }
-        
+
         String imeDatoteke = args[0];
 
         if (!isFilenameValid(imeDatoteke)) {
@@ -28,18 +28,13 @@ public class PrimerLoseNapisanogPrograma {
             return;
         }
 
-        List<Kutija> kutije;
-        
         try {
-            kutije = ucitajKutijeIzDatoteke(f);
+            List<Kutija> kutije = ucitajKutijeIzDatoteke(f);
+
+            System.out.println(pronadjiNajboljuKutiju(kutije));
         } catch (FileNotFoundException e) {
             System.err.println("Došlo je do greške prilikom čitanja datoteke. Greška: " + e.getMessage());
-            return;
         }
-
-        Kutija najbolja = pronadjiNajboljuKutiju(kutije);
-
-        System.out.println(najbolja);
     }
 
     public static void prikaziPomoc() {
