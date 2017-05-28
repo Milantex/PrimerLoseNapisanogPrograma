@@ -1,11 +1,6 @@
 package primerlosenapisanogprograma;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class PrimerLoseNapisanogPrograma {
     public static void main(String[] args) {
@@ -15,25 +10,14 @@ public class PrimerLoseNapisanogPrograma {
         }
 
         String imeDatoteke = args[0];
-
-        if (!isFilenameValid(imeDatoteke)) {
-            System.err.println("Datoteka mora da ima ekstenziju .txt da bi program mogao da je koristi.");
-            return;
-        }
-
-        File f = new File(imeDatoteke);
-
-        if ( ! isFileUsable(f) ) {
-            System.err.println("Datoteka ne postoji ili nije moguce citanje izabrane datoteke.");
-            return;
-        }
-
+        
         try {
-            List<Kutija> kutije = ucitajKutijeIzDatoteke(f);
-
-            System.out.println(pronadjiNajboljuKutiju(kutije));
-        } catch (FileNotFoundException e) {
-            System.err.println("Došlo je do greške prilikom čitanja datoteke. Greška: " + e.getMessage());
+            KutijaFileReader kutijaFileReader = new KutijaFileReader(imeDatoteke);
+            List<Kutija> kutije = kutijaFileReader.ucitajKutije();
+            Kutija najbolja = pronadjiNajboljuKutiju(kutije);
+            System.out.println(najbolja);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 
@@ -47,35 +31,6 @@ public class PrimerLoseNapisanogPrograma {
         System.out.println("Način poziva programa:");
         System.out.println("program ime_datoteke.txt");
         System.out.println();
-    }
-
-    public static boolean isFilenameValid(String filename) {
-        return Pattern.compile("^.*\\.txt$").matcher(filename).matches();
-    }
-
-    public static boolean isFileUsable(File f) {
-        return f.exists() && f.isFile() && f.canRead();
-    }
-    
-    public static List<Kutija> ucitajKutijeIzDatoteke (File f) throws FileNotFoundException {
-        List<Kutija> kutije = new ArrayList<>();
-
-        Scanner s = new Scanner(f);
-
-        while (s.hasNext()) {
-            Kutija k = new Kutija();
-
-            k.setNaziv(s.next());
-            k.setSirina(s.nextFloat());
-            k.setDuzina(s.nextFloat());
-            k.setVisina(s.nextFloat());
-            k.setMaterijal(s.next());
-            k.setImaPoklopac(s.nextLine().trim().equals("T"));
-
-            kutije.add(k);
-        }
-
-        return kutije;
     }
 
     public static Kutija pronadjiNajboljuKutiju(List<Kutija> kutije) {
