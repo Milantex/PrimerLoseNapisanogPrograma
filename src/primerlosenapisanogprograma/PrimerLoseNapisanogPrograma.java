@@ -16,14 +16,14 @@ public class PrimerLoseNapisanogPrograma {
         }
 
         if (!isFilenameValid(args[0])) {
-            System.out.println("Datoteka mora da ima ekstenziju .txt da bi program mogao da je koristi.");
+            System.err.println("Datoteka mora da ima ekstenziju .txt da bi program mogao da je koristi.");
             return;
         }
 
         File f = new File(args[0]);
 
         if ( ! isFileUsable(f) ) {
-            System.out.println("Datoteka ne postoji ili nije moguce citanje izabrane datoteke.");
+            System.err.println("Datoteka ne postoji ili nije moguce citanje izabrane datoteke.");
             return;
         }
 
@@ -32,7 +32,7 @@ public class PrimerLoseNapisanogPrograma {
         try {
             kutije = ucitajKutijeIzDatoteke(f);
         } catch (FileNotFoundException e) {
-            System.out.println("Došlo je do greške prilikom čitanja datoteke. Greška: " + e.getMessage());
+            System.err.println("Došlo je do greške prilikom čitanja datoteke. Greška: " + e.getMessage());
             return;
         }
 
