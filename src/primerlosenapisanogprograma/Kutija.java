@@ -6,6 +6,10 @@ public class Kutija {
     private String materijal;
     private boolean imaPoklopac;
 
+    public float getZapremina() {
+        return sirina * duzina * visina;
+    }
+
     public String getNaziv() {
         return naziv;
     }

@@ -50,7 +50,7 @@ public class PrimerLoseNapisanogPrograma {
                     Kutija najbolja = kutije.get(0);
                     for (int i=0; i<kutije.size(); i++) {
                         if (kutije.get(i).getImaPoklopac() &&
-                            najbolja.getSirina()*najbolja.getVisina()*najbolja.getDuzina() < kutije.get(i).getSirina()*kutije.get(i).getVisina()*kutije.get(i).getDuzina()) {
+                            najbolja.getZapremina() < kutije.get(i).getZapremina()) {
                             najbolja = kutije.get(i);
                         }
                     }
