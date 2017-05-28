@@ -1,0 +1,7 @@
+K451-A3     10.00    5.00    5.00   KARTON      T
+PAK560-500   5.00   10.00   10.00   PLASTIKA    T
+K450-RR      7.50    7.50    5.25   KARTON      F
+LI-600       5.00   10.00   10.00   METAL       T
+K450-RO      7.50    7.50    7.50   KARTON      F
+K451-A8     12.25    5.00   10.00   KARTON      T
+LER-202-Y   10.00   10.00    6.70   METAL       F
