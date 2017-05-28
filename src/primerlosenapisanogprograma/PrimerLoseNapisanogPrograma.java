@@ -3,6 +3,7 @@ package primerlosenapisanogprograma;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class PrimerLoseNapisanogPrograma {
     public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class PrimerLoseNapisanogPrograma {
         } else {
             System.out.println("Ucitavam datoteku " + args[0]);
 
-            if (args[0].length() > 4 && args[0].substring(args[0].length()-4).equals(".txt")) {
+            if (isFilenameValid(args[0])) {
                 File f = new File(args[0]);
 
                 if (f.exists() && f.isFile() && f.canRead()) {
@@ -68,5 +69,9 @@ public class PrimerLoseNapisanogPrograma {
         System.out.println("Način poziva programa:");
         System.out.println("program ime_datoteke.txt");
         System.out.println();
+    }
+
+    public static boolean isFilenameValid(String filename) {
+        return Pattern.compile("^.*\\.txt$").matcher(filename).matches();
     }
 }
