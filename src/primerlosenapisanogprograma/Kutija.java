@@ -7,7 +7,7 @@ package primerlosenapisanogprograma;
 public class Kutija {
     private String naziv;
     private float sirina, duzina, visina;
-    private String materijal;
+    private Materijal materijal;
     private boolean imaPoklopac;
 
     private Float zapremina;
@@ -110,17 +110,16 @@ public class Kutija {
      * Vraća materijal od kojeg ja napravljena kutija.
      * @return Materijal od kojeg je napravljena kutija
      */
-    public String getMaterijal() {
+    public Materijal getMaterijal() {
         return materijal;
     }
 
     /**
      * Pomoću ovog metoda se postavlja materijal od kojeg je napravljena kutija.
-     * TODO: Treba ovo prevesti u enum tip, umesto u string.
      * @param materijal Novi materijal od kojeg je napravljena kutija
      * @return Instanca kutije nad kojom je pozvan ovaj metod
      */
-    public Kutija setMaterijal(String materijal) {
+    public Kutija setMaterijal(Materijal materijal) {
         this.materijal = materijal;
         return this;
     }

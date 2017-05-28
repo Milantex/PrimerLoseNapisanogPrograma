@@ -75,7 +75,7 @@ public class KutijaFileReader {
             k.setSirina(s.nextFloat());
             k.setDuzina(s.nextFloat());
             k.setVisina(s.nextFloat());
-            k.setMaterijal(s.next());
+            k.setMaterijal(Materijal.valueOf(s.next()));
             k.setImaPoklopac(s.nextLine().trim().equals("T"));
 
             kutije.add(k);
