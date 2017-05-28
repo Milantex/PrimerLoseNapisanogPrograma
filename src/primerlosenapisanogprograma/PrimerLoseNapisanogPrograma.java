@@ -3,6 +3,7 @@ package primerlosenapisanogprograma;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -87,10 +88,9 @@ public class PrimerLoseNapisanogPrograma {
     public static Kutija pronadjiNajboljuKutiju(List<Kutija> kutije) {
         Kutija najbolja = kutije.get(0);
 
-        for (int i=0; i<kutije.size(); i++) {
-            if (kutije.get(i).getImaPoklopac() &&
-                najbolja.getZapremina() < kutije.get(i).getZapremina()) {
-                najbolja = kutije.get(i);
+        for (Kutija k : kutije) {
+            if (k.getImaPoklopac() && najbolja.getZapremina() < k.getZapremina()) {
+                najbolja = k;
             }
         }
 
