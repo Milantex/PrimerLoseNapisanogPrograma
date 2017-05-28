@@ -37,13 +37,7 @@ public class PrimerLoseNapisanogPrograma {
             return;
         }
 
-        Kutija najbolja = kutije.get(0);
-        for (int i=0; i<kutije.size(); i++) {
-            if (kutije.get(i).getImaPoklopac() &&
-                najbolja.getZapremina() < kutije.get(i).getZapremina()) {
-                najbolja = kutije.get(i);
-            }
-        }
+        Kutija najbolja = pronadjiNajboljuKutiju(kutije);
 
         System.out.println("Najbolja kutija je: ");
         System.out.println(najbolja);
@@ -88,5 +82,18 @@ public class PrimerLoseNapisanogPrograma {
         }
 
         return kutije;
+    }
+
+    public static Kutija pronadjiNajboljuKutiju(List<Kutija> kutije) {
+        Kutija najbolja = kutije.get(0);
+
+        for (int i=0; i<kutije.size(); i++) {
+            if (kutije.get(i).getImaPoklopac() &&
+                najbolja.getZapremina() < kutije.get(i).getZapremina()) {
+                najbolja = kutije.get(i);
+            }
+        }
+
+        return najbolja;
     }
 }
