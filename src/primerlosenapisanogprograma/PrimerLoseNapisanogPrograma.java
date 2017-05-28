@@ -9,54 +9,57 @@ public class PrimerLoseNapisanogPrograma {
     public static void main(String[] args) {
         if (args.length != 1) {
             prikaziPomoc();
-        } else {
-            System.out.println("Ucitavam datoteku " + args[0]);
+            return;
+        }
 
-            if (isFilenameValid(args[0])) {
-                File f = new File(args[0]);
+        System.out.println("Ucitavam datoteku " + args[0]);
 
-                if (f.exists() && f.isFile() && f.canRead()) {
-                    ArrayList<Kutija> kutije = new ArrayList<>();
+        if (!isFilenameValid(args[0])) {
+            System.out.println("Datoteka mora da ima ekstenziju .txt da bi program mogao da je koristi.");
+            return;
+        }
 
-                    try {
-                        Scanner s = new Scanner(f);
+        File f = new File(args[0]);
 
-                        while (s.hasNext()) {
-                            kutije.add(new Kutija());
+        if (! f.exists() || ! f.isFile() || ! f.canRead()) {
+            System.out.println("Datoteka ne postoji ili nije moguce citanje izabrane datoteke.");
+            return;
+        }
 
-                            kutije.get(kutije.size()-1).setNaziv(s.next());
-                            kutije.get(kutije.size()-1).setSirina(s.nextFloat());
-                            kutije.get(kutije.size()-1).setDuzina(s.nextFloat());
-                            kutije.get(kutije.size()-1).setVisina(s.nextFloat());
-                            kutije.get(kutije.size()-1).setMaterijal(s.next());
+        ArrayList<Kutija> kutije = new ArrayList<>();
 
-                            String imaNemaPoklopac = s.nextLine().trim();
-                            kutije.get(kutije.size()-1).setImaPoklopac(imaNemaPoklopac.equals("T"));
-                        }
-                    } catch (Exception e) { }
+        try {
+            Scanner s = new Scanner(f);
 
-                    Kutija najbolja = kutije.get(0);
-                    for (int i=0; i<kutije.size(); i++) {
-                        if (kutije.get(i).getImaPoklopac() &&
-                            najbolja.getZapremina() < kutije.get(i).getZapremina()) {
-                            najbolja = kutije.get(i);
-                        }
-                    }
+            while (s.hasNext()) {
+                kutije.add(new Kutija());
 
-                    System.out.println("Najbolja kutija je: ");
-                    System.out.println("Naziv: " + najbolja.getNaziv());
-                    System.out.println("Širina: " + najbolja.getSirina());
-                    System.out.println("Dužina: " + najbolja.getDuzina());
-                    System.out.println("Visina: " + najbolja.getVisina());
-                    System.out.println("Materijal: " + najbolja.getMaterijal());
-                    System.out.println("Ima poklopac: " + ((najbolja.getImaPoklopac())?"Da":"Ne"));
-                } else {
-                    System.out.println("Datoteka ne postoji ili nije moguce citanje izabrane datoteke.");
-                }
-            } else {
-                System.out.println("Datoteka mora da ima ekstenziju .txt da bi program mogao da je koristi.");
+                kutije.get(kutije.size()-1).setNaziv(s.next());
+                kutije.get(kutije.size()-1).setSirina(s.nextFloat());
+                kutije.get(kutije.size()-1).setDuzina(s.nextFloat());
+                kutije.get(kutije.size()-1).setVisina(s.nextFloat());
+                kutije.get(kutije.size()-1).setMaterijal(s.next());
+
+                String imaNemaPoklopac = s.nextLine().trim();
+                kutije.get(kutije.size()-1).setImaPoklopac(imaNemaPoklopac.equals("T"));
+            }
+        } catch (Exception e) { }
+
+        Kutija najbolja = kutije.get(0);
+        for (int i=0; i<kutije.size(); i++) {
+            if (kutije.get(i).getImaPoklopac() &&
+                najbolja.getZapremina() < kutije.get(i).getZapremina()) {
+                najbolja = kutije.get(i);
             }
         }
+
+        System.out.println("Najbolja kutija je: ");
+        System.out.println("Naziv: " + najbolja.getNaziv());
+        System.out.println("Širina: " + najbolja.getSirina());
+        System.out.println("Dužina: " + najbolja.getDuzina());
+        System.out.println("Visina: " + najbolja.getVisina());
+        System.out.println("Materijal: " + najbolja.getMaterijal());
+        System.out.println("Ima poklopac: " + ((najbolja.getImaPoklopac())?"Da":"Ne"));
     }
 
     public static void prikaziPomoc() {
