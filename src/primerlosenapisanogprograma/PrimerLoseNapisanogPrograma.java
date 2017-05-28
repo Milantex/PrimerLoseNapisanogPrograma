@@ -15,8 +15,6 @@ public class PrimerLoseNapisanogPrograma {
             return;
         }
 
-        System.out.println("Ucitavam datoteku " + args[0]);
-
         if (!isFilenameValid(args[0])) {
             System.out.println("Datoteka mora da ima ekstenziju .txt da bi program mogao da je koristi.");
             return;
@@ -40,7 +38,6 @@ public class PrimerLoseNapisanogPrograma {
 
         Kutija najbolja = pronadjiNajboljuKutiju(kutije);
 
-        System.out.println("Najbolja kutija je: ");
         System.out.println(najbolja);
     }
 
