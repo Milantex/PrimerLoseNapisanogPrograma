@@ -84,4 +84,12 @@ public class Kutija {
             "Materijal: " + getMaterijal() + "\n" +
             "Ima poklopac: " + ((getImaPoklopac())?"Da":"Ne") + "\n";
     }
+
+    public Kutija vratiBoljuKutiju(Kutija druga) {
+        if (getImaPoklopac() && druga.getZapremina() < getZapremina()) {
+            return this;
+        }
+
+        return druga;
+    }
 }

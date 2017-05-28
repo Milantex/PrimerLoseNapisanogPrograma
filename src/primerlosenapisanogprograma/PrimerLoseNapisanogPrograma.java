@@ -89,9 +89,7 @@ public class PrimerLoseNapisanogPrograma {
         Kutija najbolja = kutije.get(0);
 
         for (Kutija k : kutije) {
-            if (k.getImaPoklopac() && najbolja.getZapremina() < k.getZapremina()) {
-                najbolja = k;
-            }
+            najbolja = k.vratiBoljuKutiju(najbolja);
         }
 
         return najbolja;
