@@ -11,12 +11,7 @@ public class PrimerLoseNapisanogPrograma {
         } else {
             System.out.println("Ucitavam datoteku " + args[0]);
 
-            if (args[0].length() > 4 &&
-                args[0].charAt(args[0].length()-4) == '.' &&
-                args[0].charAt(args[0].length()-3) == 't' &&
-                args[0].charAt(args[0].length()-2) == 'x' &&
-                args[0].charAt(args[0].length()-1) == 't') {
-
+            if (args[0].length() > 4 && args[0].substring(args[0].length()-4).equals(".txt")) {
                 File f = new File(args[0]);
 
                 if (f.exists() && f.isFile() && f.canRead()) {
